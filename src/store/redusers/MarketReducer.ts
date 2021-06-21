@@ -1,12 +1,14 @@
 import { AnyAction } from 'redux';
 import { IMarketState, EnumMarketTypes, fetchDataSuccesAction } from '../../types/types';
 
+// начальное состояние 
 const initialSate: IMarketState = {
   firstRates: {},
   secondRates: {},
   thirdRates: {}
 };
 
+// редьюсер изменяющий состояние
 export const MarketReducer = (state = initialSate, action: AnyAction): IMarketState => {
   switch (action.type) {
 

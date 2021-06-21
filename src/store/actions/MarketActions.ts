@@ -1,10 +1,11 @@
 import { Dispatch } from 'react';
-import { EnumMarketTypes, fetchDataSuccesAction, SuccessActionType } from '../../types/types';
+import { rate, fetchDataSuccesAction, SuccessActionType } from '../../types/types';
 
 
 
 export const fetchFirstMarket = (type: SuccessActionType, market: string) => {
 
+  // action получения данных из API
   return async (dispatch: Dispatch<fetchDataSuccesAction>) => {
 
     const fetchData = async (poll: string = '') => {
@@ -13,7 +14,8 @@ export const fetchFirstMarket = (type: SuccessActionType, market: string) => {
         const response = await fetch(url)
           .then(res => res.json());
 
-        const result = {
+        // созание валютных пар
+        const result: rate = {
           'RUB/USD': +(response['rates']['RUB'] / response['rates']['USD']).toFixed(2),
           'RUB/EUR': +(response['rates']['RUB'] / response['rates']['EUR']).toFixed(2),
           'EUR/USD': +(response['rates']['EUR'] / response['rates']['USD']).toFixed(2)
@@ -24,14 +26,16 @@ export const fetchFirstMarket = (type: SuccessActionType, market: string) => {
           payload: result
         });
 
+        // зацикливанние запроса
         poll && fetchData('/poll');
 
       } catch (e) {
         console.log(e);
       }
     };
-
+    // получение данных обычным запросом
     fetchData();
+    // получение данных через long poll
     fetchData('/poll');
   };
 

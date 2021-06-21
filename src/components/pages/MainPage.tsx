@@ -6,16 +6,20 @@ import { EnumMarketTypes } from '../../types/types';
 import './mainPage.css';
 const MainPage: React.FC = () => {
 
+  //хук для доступа к dispatch
   const dispatch = useDispatch();
 
+  // загрузка рынков
   useEffect(() => {
     dispatch(fetchFirstMarket(EnumMarketTypes.FETCH_FIRST_DATA_SUCCESS, 'first'));
     dispatch(fetchFirstMarket(EnumMarketTypes.FETCH_SECOND_DATA_SUCCESS, 'second'));
     dispatch(fetchFirstMarket(EnumMarketTypes.FETCH_THIRD_DATA_SUCCESS, 'third'));
   }, []);
 
+  // получение стейта из redux
   const { firstRates, secondRates, thirdRates } = useTypedSelector(state => state.market);
 
+  // группировака данных по валютам
   const RU: any[] = [firstRates['RUB/USD'], secondRates['RUB/USD'], thirdRates['RUB/USD']];
   const RE: any[] = [firstRates['RUB/EUR'], secondRates['RUB/EUR'], thirdRates['RUB/EUR']];
   const EU: any[] = [firstRates['EUR/USD'], secondRates['EUR/USD'], thirdRates['EUR/USD']];
