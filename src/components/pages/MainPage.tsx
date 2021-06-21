@@ -7,13 +7,14 @@ import './mainPage.css';
 const MainPage: React.FC = () => {
 
   const dispatch = useDispatch();
-  const { firstRates, secondRates, thirdRates } = useTypedSelector(state => state.market);
 
   useEffect(() => {
     dispatch(fetchFirstMarket(EnumMarketTypes.FETCH_FIRST_DATA_SUCCESS, 'first'));
     dispatch(fetchFirstMarket(EnumMarketTypes.FETCH_SECOND_DATA_SUCCESS, 'second'));
     dispatch(fetchFirstMarket(EnumMarketTypes.FETCH_THIRD_DATA_SUCCESS, 'third'));
   }, []);
+
+  const { firstRates, secondRates, thirdRates } = useTypedSelector(state => state.market);
 
   const RU: any[] = [firstRates['RUB/USD'], secondRates['RUB/USD'], thirdRates['RUB/USD']];
   const RE: any[] = [firstRates['RUB/EUR'], secondRates['RUB/EUR'], thirdRates['RUB/EUR']];
@@ -23,7 +24,7 @@ const MainPage: React.FC = () => {
     <div className="container">
       <table className='currency-table'>
         <tr className='currency-table-row'>
-          <th className='currency-table-cell'>Pair name/market</th>
+          <th className='currency-table-cell'>Pair name / market</th>
           <th className='currency-table-cell'>First</th>
           <th className='currency-table-cell'>Second</th>
           <th className='currency-table-cell'>Third</th>
