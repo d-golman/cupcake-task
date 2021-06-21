@@ -1,0 +1,22 @@
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.currency-table, th, td {
+  border: 1px solid #999;
+}
+
+.currency-table-cell{
+  padding: 15px;
+  font-size: 1.6rem;
+  text-align: center;
+  color: #333
+}
+
+.currency-table-cell.min{
+  background-color: rgb(143, 123, 233);
+  color: white;
+}
