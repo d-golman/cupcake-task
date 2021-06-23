@@ -1,12 +1,21 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { MarketReducer } from "./redusers/MarketReducer";
 
-// создание хранилища redux
-export const store = configureStore({
-  reducer: {
-    market: MarketReducer,
-  }
+const middleware = getDefaultMiddleware({
+  immutableCheck: false,
+  serializableCheck: false,
+  thunk: true,
 });
+
+// создание хранилища redux
+export const store = configureStore(
+  {
+
+    reducer: {
+      market: MarketReducer,
+    },
+    middleware,
+  });
 
 
 // тип для создания кастомного хука получения стейта с типизацией

@@ -35,20 +35,20 @@ const MainPage: React.FC = () => {
         </tr>
         <tr className='currency-table-row'>
           <th className='currency-table-cell'>RUB/USD</th>
-          {RU.map(pair => {
-            return <td className={`${Math.min(...RU) == pair ? 'currency-table-cell min' : 'currency-table-cell'}`}  >{pair}</td>;
+          {RU.map((pair, key) => {
+            return <td key={key} className={`${Math.min(...RU) == pair ? 'currency-table-cell min' : 'currency-table-cell'}`}  >{pair}</td>;
           })}
         </tr>
         <tr className='currency-table-row'>
           <th className='currency-table-cell'>RUB/EUR</th>
-          {RE.map(pair => {
-            return <td className={`${Math.min(...RE) == pair ? 'currency-table-cell min' : 'currency-table-cell'}`}  >{pair}</td>;
+          {RE.map((pair, key) => {
+            return <td key={key} className={`${Math.min(...RE) == pair ? 'currency-table-cell min' : 'currency-table-cell'}`}  >{pair}</td>;
           })}
         </tr>
         <tr className='currency-table-row'>
           <th className='currency-table-cell'>EUR/USD</th>
-          {EU.map(pair => {
-            return <td className={`${Math.min(...EU) == pair ? 'currency-table-cell min' : 'currency-table-cell'}`}  >{pair}</td>;
+          {EU.map((pair, key) => {
+            return <td key={key} className={`${Math.min(...EU) == pair ? 'currency-table-cell min' : 'currency-table-cell'}`}  >{pair}</td>;
           })}
         </tr>
       </table>
